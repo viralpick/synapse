@@ -192,6 +192,8 @@ export interface BadgeProps extends VariantProps<typeof badgeVariants> {
   rightIcon?: React.ReactNode;
   className?: string;
   id?: string;
+  /** Dynamic color override (hex/css color). Sets inline background-color + white text. */
+  color?: string;
 }
 
 /**
@@ -211,6 +213,7 @@ function Badge({
   leftIcon,
   rightIcon,
   children,
+  color,
   ...props
 }: BadgeProps) {
   return (
@@ -220,13 +223,14 @@ function Badge({
         badgeVariants({
           size,
           shape,
-          badgeStyle,
-          theme,
+          badgeStyle: color ? undefined : badgeStyle,
+          theme: color ? undefined : theme,
           outline,
           active,
         }),
         className
       )}
+      style={color ? { backgroundColor: color, color: "#fff" } : undefined}
       {...props}
     >
       {leftIcon && <span className="shrink-0 w-4 h-4">{leftIcon}</span>}

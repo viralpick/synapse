@@ -12,6 +12,7 @@ export { Calendar, CalendarDayButton } from "./components/calendar";
 export { Card, CardHeader, CardFooter, CardTitle, CardAction, CardDescription, CardContent } from "./components/card";
 export { Checkbox, checkboxVariants } from "./components/checkbox";
 export { Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandShortcut, CommandSeparator } from "./components/command";
+export { DatePickerProvider } from "./components/date-picker/date-picker-context";
 export {
   DatePicker,
   DatePickerField,
@@ -49,6 +50,7 @@ export type { BadgeProps } from "./components/badge";
 export type { BreadcrumbProps, BreadcrumbItemProps, BreadcrumbDividerProps } from "./components/breadcrumb";
 export type { ButtonProps } from "./components/button";
 export type { CheckboxProps } from "./components/checkbox";
+export type { DatePickerProviderProps } from "./components/date-picker/date-picker-context";
 export type {
   DatePickerProps,
   DatePickerFieldProps,
