@@ -11,7 +11,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/cn";
 
 const inputVariants = cva(
-  "inline-flex items-center bg-gray-0 gap-1 rounded-medium transition-all focus-within:ring-2 focus-within:ring-border-brand focus-within:ring-offset-1",
+  "inline-flex items-center bg-gray-0 gap-1 rounded-medium transition-all focus-within:ring-2 focus-within:ring-border-brand focus-within:ring-offset-1 min-w-[280px]",
   {
     variants: {
       size: {
