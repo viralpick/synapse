@@ -32,7 +32,7 @@ const dropdownTriggerVariants = cva(
       variant: "default",
       disabled: false,
     },
-  }
+  },
 );
 
 // ============================================================================
@@ -52,7 +52,7 @@ const dropdownItemVariants = cva(
     defaultVariants: {
       state: "default",
     },
-  }
+  },
 );
 
 // ============================================================================
@@ -144,9 +144,7 @@ export function Select({
       <DropdownMenuPrimitive.Root>
         <DropdownMenuPrimitive.Trigger
           disabled={disabled}
-          className={cn(
-            dropdownTriggerVariants({ size, variant, disabled }),
-          )}
+          className={cn(dropdownTriggerVariants({ size, variant, disabled }))}
         >
           <span className={cn(!selectedOption && "text-text-tertiary")}>
             {selectedOption?.label || placeholder}
@@ -158,6 +156,7 @@ export function Select({
           <DropdownMenuPrimitive.Content
             align={side === "left" ? "start" : "end"}
             sideOffset={4}
+            style={{ minWidth: "var(--radix-dropdown-menu-trigger-width)" }}
             className="z-50 bg-background-0 border border-border-100 rounded-medium shadow-lg p-1 animate-in fade-in-0 zoom-in-95"
           >
             {options.map((option) => (
@@ -170,10 +169,10 @@ export function Select({
                     state: option.disabled
                       ? "disabled"
                       : value === option.value
-                        ? "selected"
-                        : "default",
+                      ? "selected"
+                      : "default",
                   }),
-                  "hover:bg-background-100 focus:bg-background-100"
+                  "hover:bg-background-100 focus:bg-background-100",
                 )}
               >
                 {option.leadIcon && (
@@ -282,8 +281,8 @@ export function MultiSelect({
     selectedCount === 0
       ? placeholder
       : selectedCount === 1
-        ? options.find((o) => o.value === values[0])?.label
-        : `${selectedCount}개 선택됨`;
+      ? options.find((o) => o.value === values[0])?.label
+      : `${selectedCount}개 선택됨`;
 
   return (
     <div className={cn("flex flex-col gap-1", className)}>
@@ -293,9 +292,7 @@ export function MultiSelect({
       <DropdownMenuPrimitive.Root>
         <DropdownMenuPrimitive.Trigger
           disabled={disabled}
-          className={cn(
-            dropdownTriggerVariants({ size, variant, disabled })
-          )}
+          className={cn(dropdownTriggerVariants({ size, variant, disabled }))}
         >
           <span className={cn(selectedCount === 0 && "text-text-tertiary")}>
             {displayText}
@@ -307,6 +304,7 @@ export function MultiSelect({
           <DropdownMenuPrimitive.Content
             align={side === "left" ? "start" : "end"}
             sideOffset={4}
+            style={{ minWidth: "var(--radix-dropdown-menu-trigger-width)" }}
             className="z-50 bg-background-0 border border-border-100 rounded-medium shadow-lg p-1 animate-in fade-in-0 zoom-in-95"
           >
             {options.map((option) => {
@@ -322,7 +320,7 @@ export function MultiSelect({
                     dropdownItemVariants({
                       state: option.disabled ? "disabled" : "default",
                     }),
-                    "hover:bg-background-50 focus:bg-background-50"
+                    "hover:bg-background-50 focus:bg-background-50",
                   )}
                 >
                   <div
@@ -330,10 +328,12 @@ export function MultiSelect({
                       "size-4 shrink-0 rounded-small border flex items-center justify-center transition-colors",
                       isSelected
                         ? "bg-background-inverted border-transparent"
-                        : "border-border-200 bg-background-0"
+                        : "border-border-200 bg-background-0",
                     )}
                   >
-                    {isSelected && <Check className="size-3 text-icon-inverted" />}
+                    {isSelected && (
+                      <Check className="size-3 text-icon-inverted" />
+                    )}
                   </div>
                   {option.leadIcon && (
                     <span className="size-4 shrink-0 text-icon-secondary">
@@ -341,7 +341,9 @@ export function MultiSelect({
                     </span>
                   )}
                   <div className="flex flex-col flex-1 min-w-0">
-                    <span className="text-label-2 truncate">{option.label}</span>
+                    <span className="text-label-2 truncate">
+                      {option.label}
+                    </span>
                     {option.caption && (
                       <span className="text-caption-1 text-text-secondary">
                         {option.caption}
