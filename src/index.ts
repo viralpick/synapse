@@ -45,6 +45,7 @@ export { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableC
 export { Tabs, TabsList, TabsTrigger, TabsContent } from "./components/tabs";
 export { Textarea, textareaVariants } from "./components/textarea";
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "./components/tooltip";
+export { Uploader, uploaderDropzoneVariants, uploaderProgressVariants, uploaderFileItemVariants, formatFileSize } from "./components/uploader";
 
 // Types
 export type { AccordionProps, AccordionItemProps, AccordionTriggerProps, AccordionContentProps } from "./components/accordion";
@@ -77,3 +78,4 @@ export type { SwitchProps } from "./components/switch";
 export type { TabsProps, TabsListProps, TabsTriggerProps, TabsContentProps } from "./components/tabs";
 export type { TextareaProps, TextareaActionsProps } from "./components/textarea";
 export type { TooltipContentProps, TipPosition } from "./components/tooltip";
+export type { UploadStrategy, UploadResult, UploadProgressCallback, UploaderFile, FileStatus, UploaderProps, UploaderDropzoneProps, UploaderTriggerProps, UploaderFileListProps, UploaderFileItemProps, UploaderProgressProps } from "./components/uploader";

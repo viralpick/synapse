@@ -1,5 +1,17 @@
 # @viralpick/synapse
 
+## 0.4.0
+
+### Minor Changes
+
+- feat: Uploader 컴포넌트 추가
+
+  Strategy 패턴 기반 파일 업로드 컴포넌트.
+
+  - Uploader.Dropzone (lg/md/sm), Uploader.Trigger, Uploader.FileList, Uploader.FileItem (lg/md/sm), Uploader.Progress (card lg/md, inline)
+  - UploadStrategy 인터페이스로 업로드 로직 주입 (XHR 기반, abort 지원)
+  - 드래그 & 드롭, 파일 validation, 진행률 추적, 에러 핸들링
+
 ## 0.3.2
 
 ### Patch Changes
