@@ -1,5 +1,17 @@
 # @viralpick/synapse
 
+## 0.5.0
+
+### Minor Changes
+
+- feat: Chip 컴포넌트 추가
+
+  인터랙티브한 칩/태그 컴포넌트.
+
+  - size (md/sm), shape (rounded/pill) variants
+  - leadIcon (아바타/아이콘), tailIcon (X 닫기), tag (컬러 Dot) 지원
+  - onRemove 콜백, disabled 상태, focus-visible 링 지원
+
 ## 0.4.0
 
 ### Minor Changes
