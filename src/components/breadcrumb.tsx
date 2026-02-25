@@ -16,7 +16,7 @@ const BreadcrumbContext = React.createContext<BreadcrumbContextValue>({
 
 // Breadcrumb Item Variants
 const breadcrumbItemVariants = cva(
-  "inline-flex items-center gap-8 text-label-2 font-medium transition-colors",
+  "inline-flex items-center gap-2 text-label-2 font-medium transition-colors",
   {
     variants: {
       isLast: {
@@ -27,7 +27,7 @@ const breadcrumbItemVariants = cva(
     defaultVariants: {
       isLast: false,
     },
-  }
+  },
 );
 
 // Breadcrumb Divider Variants
@@ -43,7 +43,7 @@ const breadcrumbDividerVariants = cva(
     defaultVariants: {
       type: "chevron",
     },
-  }
+  },
 );
 
 /**
@@ -88,7 +88,8 @@ export interface BreadcrumbProps {
  * @property {string} href - 링크 URL (제공시 <a> 태그로 렌더링)
  * @property {boolean} isLast - 마지막 아이템 여부 (자동 설정됨)
  */
-export interface BreadcrumbItemProps extends VariantProps<typeof breadcrumbItemVariants> {
+export interface BreadcrumbItemProps
+  extends VariantProps<typeof breadcrumbItemVariants> {
   children?: React.ReactNode;
   className?: string;
   icon?: React.ReactNode;
@@ -102,7 +103,8 @@ export interface BreadcrumbItemProps extends VariantProps<typeof breadcrumbItemV
  *
  * 일반적으로 직접 사용하지 않고 Breadcrumb이 자동으로 추가합니다.
  */
-export interface BreadcrumbDividerProps extends VariantProps<typeof breadcrumbDividerVariants> {
+export interface BreadcrumbDividerProps
+  extends VariantProps<typeof breadcrumbDividerVariants> {
   className?: string;
 }
 
@@ -133,12 +135,12 @@ function Breadcrumb({
         className={cn("inline-flex items-center", className)}
         {...props}
       >
-        <ol className="inline-flex items-center gap-8">
+        <ol className="inline-flex items-center gap-2">
           {childArray.map((child, index) => {
             const isLast = index === itemCount - 1;
 
             return (
-              <li key={index} className="inline-flex items-center gap-8">
+              <li key={index} className="inline-flex items-center gap-2">
                 {React.isValidElement<BreadcrumbItemProps>(child)
                   ? React.cloneElement(child, { isLast })
                   : child}

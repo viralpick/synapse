@@ -19,7 +19,7 @@ interface AccordionContextValue {
 }
 
 const AccordionContext = React.createContext<AccordionContextValue | null>(
-  null
+  null,
 );
 
 function useAccordionContext() {
@@ -49,7 +49,7 @@ function useAccordionItemContext() {
   const context = React.useContext(AccordionItemContext);
   if (!context) {
     throw new Error(
-      "AccordionItem components must be used within an AccordionItem"
+      "AccordionItem components must be used within an AccordionItem",
     );
   }
   return context;
@@ -76,7 +76,7 @@ const accordionItemVariants = cva(
       size: "lg",
       disabled: false,
     },
-  }
+  },
 );
 
 const accordionTriggerVariants = cva(
@@ -84,8 +84,8 @@ const accordionTriggerVariants = cva(
   {
     variants: {
       size: {
-        lg: "p-16",
-        md: "p-12",
+        lg: "p-4",
+        md: "p-3",
       },
       disabled: {
         true: "cursor-not-allowed",
@@ -96,7 +96,7 @@ const accordionTriggerVariants = cva(
       size: "lg",
       disabled: false,
     },
-  }
+  },
 );
 
 const accordionContentVariants = cva(
@@ -111,7 +111,7 @@ const accordionContentVariants = cva(
     defaultVariants: {
       size: "lg",
     },
-  }
+  },
 );
 
 // ============================================================================
@@ -194,7 +194,7 @@ function Accordion({
         return Array.isArray(defaultValue) ? defaultValue : [defaultValue];
       }
       return [];
-    }
+    },
   );
 
   const isControlled = controlledValue !== undefined;
@@ -225,19 +225,19 @@ function Accordion({
 
       onValueChange?.(type === "single" ? newValue[0] ?? "" : newValue);
     },
-    [type, openItems, isControlled, onValueChange]
+    [type, openItems, isControlled, onValueChange],
   );
 
   const contextValue = React.useMemo(
     () => ({ type, size, openItems, toggleItem }),
-    [type, size, openItems, toggleItem]
+    [type, size, openItems, toggleItem],
   );
 
   return (
     <AccordionContext.Provider value={contextValue}>
       <div
         data-slot="accordion"
-        className={cn("flex flex-col gap-8", className)}
+        className={cn("flex flex-col gap-2", className)}
         {...props}
       >
         {children}
@@ -256,7 +256,8 @@ function Accordion({
  * @property {string} value - 아이템의 고유 식별자 (필수)
  * @property {boolean} disabled - 비활성화 여부
  */
-export interface AccordionItemProps extends Omit<VariantProps<typeof accordionItemVariants>, "size"> {
+export interface AccordionItemProps
+  extends Omit<VariantProps<typeof accordionItemVariants>, "size"> {
   children?: React.ReactNode;
   className?: string;
   value: string;
@@ -282,7 +283,7 @@ function AccordionItem({
 
   const itemContextValue = React.useMemo(
     () => ({ value, disabled, isOpen, hasLeadIcon, setHasLeadIcon }),
-    [value, disabled, isOpen, hasLeadIcon]
+    [value, disabled, isOpen, hasLeadIcon],
   );
 
   return (
@@ -356,12 +357,12 @@ function AccordionTrigger({
         {...props}
       >
         <div className="flex flex-col flex-1 min-w-0 gap-2">
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-2">
             {leadIcon && (
               <span
                 className={cn(
                   "shrink-0 text-icon-primary",
-                  size === "lg" ? "[&>svg]:size-5" : "[&>svg]:size-4"
+                  size === "lg" ? "[&>svg]:size-5" : "[&>svg]:size-4",
                 )}
               >
                 {leadIcon}
@@ -374,7 +375,7 @@ function AccordionTrigger({
               className={cn(
                 "shrink-0 text-icon-secondary transition-transform duration-200",
                 size === "lg" ? "size-5" : "size-4",
-                isOpen && "rotate-180"
+                isOpen && "rotate-180",
               )}
             />
           </div>
@@ -382,13 +383,11 @@ function AccordionTrigger({
           {description && (
             <div
               className={cn(
-                "flex items-center gap-4 text-body-s text-text-secondary",
-                leadIcon && (size === "lg" ? "pl-7" : "pl-6")
+                "flex items-center gap-1 text-body-s text-text-secondary",
+                leadIcon && (size === "lg" ? "pl-7" : "pl-6"),
               )}
             >
-              {icon && (
-                <span className="shrink-0 [&>svg]:size-3">{icon}</span>
-              )}
+              {icon && <span className="shrink-0 [&>svg]:size-3">{icon}</span>}
               <span className="truncate">{description}</span>
             </div>
           )}
@@ -407,7 +406,8 @@ function AccordionTrigger({
  *
  * 추가 속성 없이 기본 HTMLDivElement 속성을 지원합니다.
  */
-export interface AccordionContentProps extends Omit<VariantProps<typeof accordionContentVariants>, "size"> {
+export interface AccordionContentProps
+  extends Omit<VariantProps<typeof accordionContentVariants>, "size"> {
   children?: React.ReactNode;
   className?: string;
 }
@@ -431,11 +431,11 @@ function AccordionContent({
   // leadIcon이 없으면: 기본 padding만
   const contentPadding = hasLeadIcon
     ? size === "lg"
-      ? "p-16 pl-[44px] pt-12"
-      : "p-12 pl-[36px]"
+      ? "p-4 pl-[44px] pt-3"
+      : "p-3 pl-[36px]"
     : size === "lg"
-      ? "p-16 pt-12"
-      : "p-12";
+    ? "p-4 pt-3"
+    : "p-3";
 
   return (
     <CollapsiblePrimitive.Content

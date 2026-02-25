@@ -1,5 +1,11 @@
 # @viralpick/synapse
 
+## 0.3.2
+
+### Patch Changes
+
+- style modification, library release to public npm
+
 ## 0.3.1
 
 ### Patch Changes

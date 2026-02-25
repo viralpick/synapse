@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-**@viralpick/synapse** is a React component library built on Radix UI primitives with Tailwind CSS and class-variance-authority (CVA). Published to GitHub Package Registry under the `@viralpick` scope.
+**@enhans/synapse** is a React component library built on Radix UI primitives with Tailwind CSS and class-variance-authority (CVA). Published to the public npm registry under the `@enhans` scope.
 
 ## Tech Stack
 
@@ -15,6 +15,7 @@
 - **Icons:** lucide-react
 - **Date Handling:** date-fns + react-day-picker
 - **Build:** tsup (ESM + CJS dual output with .d.ts generation)
+- **Storybook:** Storybook 8 with React Vite
 - **Versioning:** Changesets
 
 ## Project Structure
@@ -34,11 +35,22 @@ src/
 ## Key Commands
 
 ```bash
-npm run build       # Build with tsup + copy styles.css to dist
-npm run changeset   # Create a new changeset
-npm run version     # Apply changesets to update version
-npm run release     # Build + publish to GitHub Package Registry
+npm run build            # Build with tsup + copy styles.css to dist
+npm run storybook        # Run Storybook dev server on port 6006
+npm run build-storybook  # Build static Storybook
+npm run changeset        # Create a new changeset
+npm run version          # Apply changesets to update version + CHANGELOG
+npm run release          # Build + publish to public npm registry
 ```
+
+## Release Workflow
+
+1. Complete code changes
+2. `npm run changeset` — record changes (patch/minor/major)
+3. `npm run version` — consume changesets, bump version, update CHANGELOG
+4. `git add . && git commit` — commit version bump
+5. `git push` — push to remote
+6. `npm run release` — build + publish to npm
 
 ## Component Patterns
 
@@ -84,12 +96,13 @@ export { Button, buttonVariants };
 - **Output:** `dist/` (ESM `.js`, CJS `.cjs`, types `.d.ts`/`.d.cts`, `styles.css`)
 - **Externals:** All dependencies are external (not bundled)
 - **Tree shaking:** Enabled; CSS marked as side effects
-- **Registry:** `https://npm.pkg.github.com` (GitHub Packages)
+- **Registry:** `https://registry.npmjs.org` (public npm)
 
 ## When Adding New Components
 
 1. Create `src/components/{component-name}.tsx`
 2. Follow existing patterns: Radix UI base, CVA variants, `cn()` for classes
 3. Add JSDoc with `@component`, `@description`, `@useCase`
-4. Export from `src/index.ts`
-5. Create a changeset with `npm run changeset`
+4. Add Storybook story: `src/components/{component-name}.stories.tsx`
+5. Export from `src/index.ts`
+6. Create a changeset with `npm run changeset`

@@ -9,8 +9,8 @@ const checkboxVariants = cva(
   {
     variants: {
       size: {
-        sm: "h-16 w-16",
-        md: "h-20 w-20",
+        sm: "h-4 w-4",
+        md: "h-5 w-5",
       },
       checked: {
         unchecked: "",
@@ -42,7 +42,7 @@ const checkboxVariants = cva(
       size: "sm",
       checked: "unchecked",
     },
-  }
+  },
 );
 
 /**
@@ -78,7 +78,8 @@ const checkboxVariants = cva(
  * <Checkbox checked={true} disabled />
  * ```
  */
-export interface CheckboxProps extends Omit<VariantProps<typeof checkboxVariants>, "checked"> {
+export interface CheckboxProps
+  extends Omit<VariantProps<typeof checkboxVariants>, "checked"> {
   ref?: React.Ref<React.ComponentRef<typeof CheckboxPrimitive.Root>>;
   checked?: boolean | "indeterminate";
   onCheckedChange?: (checked: boolean | "indeterminate") => void;
@@ -100,13 +101,21 @@ export interface CheckboxProps extends Omit<VariantProps<typeof checkboxVariants
  * **참고:** `checked` prop은 `false | true | "indeterminate"` 값을 받습니다.
  * 불확정 상태를 사용할 때는 `onCheckedChange`를 통해 상태를 외부에서 관리해야 합니다.
  */
-function Checkbox({ ref, className, size, checked, disabled, onCheckedChange, ...props }: CheckboxProps) {
+function Checkbox({
+  ref,
+  className,
+  size,
+  checked,
+  disabled,
+  onCheckedChange,
+  ...props
+}: CheckboxProps) {
   const checkedState =
     checked === "indeterminate"
       ? "indeterminate"
       : checked
-        ? "checked"
-        : "unchecked";
+      ? "checked"
+      : "unchecked";
 
   const iconSize = size === "md" ? 16 : 12;
 
@@ -132,7 +141,10 @@ function Checkbox({ ref, className, size, checked, disabled, onCheckedChange, ..
       checked={checked}
       disabled={disabled}
       data-disabled={disabled ? "" : undefined}
-      className={cn(checkboxVariants({ size, checked: checkedState }), className)}
+      className={cn(
+        checkboxVariants({ size, checked: checkedState }),
+        className,
+      )}
       onCheckedChange={handleCheckedChange}
       {...props}
     >
