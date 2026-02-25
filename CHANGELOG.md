@@ -1,5 +1,11 @@
 # @viralpick/synapse
 
+## 0.5.3
+
+### Patch Changes
+
+- feat: Input 컴포넌트에 최소 너비 280px 추가
+
 ## 0.5.2
 
 ### Patch Changes
