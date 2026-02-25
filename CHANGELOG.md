@@ -1,5 +1,11 @@
 # @viralpick/synapse
 
+## 0.5.2
+
+### Patch Changes
+
+- fix: dropdown content의 최소 너비를 trigger 너비에 맞춤
+
 ## 0.5.1
 
 ### Patch Changes
