@@ -22,7 +22,7 @@ function Card({ className, queryId, queryContent, ...props }: CardProps) {
       data-query-id={queryId}
       data-query-content={queryContent}
       className={cn(
-        "bg-card text-card-foreground flex flex-col gap-1.5 py-6 rounded-xlarge border shadow-sm",
+        "bg-background-0 text-text-primary flex flex-col gap-1.5 py-6 rounded-xlarge border shadow-sm",
         className
       )}
       {...props}
@@ -57,7 +57,7 @@ function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-description"
-      className={cn("text-muted-foreground text-label-l", className)}
+      className={cn("text-text-secondary text-label-l", className)}
       {...props}
     />
   );

@@ -172,7 +172,7 @@ function SingleSelect({
           <span
             className={cn(
               "overflow-hidden text-ellipsis",
-              !selectedValue ? "text-muted-foreground" : "text-primary"
+              !selectedValue ? "text-text-secondary" : "text-text-primary"
             )}
           >
             {selectedLabel}

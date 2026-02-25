@@ -1,5 +1,11 @@
 # @viralpick/synapse
 
+## 0.5.1
+
+### Patch Changes
+
+- migrate legacy shadcn tokens to semantic design tokens across all components
+
 ## 0.5.0
 
 ### Minor Changes
